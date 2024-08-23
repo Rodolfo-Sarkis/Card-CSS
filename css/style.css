@@ -1,0 +1,166 @@
+body {
+    background-color: var(--neutral-dark);
+    font-family: "Outfit", sans-serif;
+
+}
+
+/* agora definir a largura do cartão com a ajuda da extensão do chrome perfect pixel */
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 25px;
+}
+
+/* para o align items funcionar tem que definir uma altura */
+
+/* com a unidade de medida da altura em vh, o elemento ocupa 100% da altra do dispositivo (ex.: monitor ou celular) */
+
+.nft-card {
+    max-width: 350px;
+    background-color: var(--neutral-medium);
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.nft-card .image-link {
+    position: relative;
+    display: flex;
+}
+
+.nft-card .image-link .image {
+    width: 100%;
+    border-radius: 7px;
+}
+
+/* usar o background-color provisóriamente apenas para testar o tamanho da imagem pra encaixar no cartão */
+
+/* para separar a imagem das bordas do cartão usa-se o padding, mesmo que seja no olho, com ajuda da extensão perfect pixel */
+
+/* a imagem iria ficar com uma largura maior do que 500px ( como foi setada um max-width de 500px, podemos definir um width de 100% na img pra ela pegar 100% dos 500px */
+
+.nft-card .image-link::before {   
+    content: '';
+    background-color:cyan;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.nft-card .image-link::after {
+    content: '';
+    background: url(../images/icon-view.svg) no-repeat center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.nft-card .image-link:hover::before {
+    opacity: 0.4;
+}
+
+.nft-card .image-link:hover::after {
+    opacity: 1;
+}
+
+.nft-card .title-link .title {
+    font-size: 22px;
+    color: #ffffff;
+    margin: 25px 0px 20px;
+}
+
+/* dica: colocar o font family primeiro para testar o tamanho da fonte com o perfect pixel */
+
+.nft-card .title-link .title:hover {
+    color: var(--primary-medium);
+}
+
+.nft-card .about {
+    color: var(--primary-soft);
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 25px;
+    margin-bottom: 23px;
+}
+
+/* font-weight serve para dar um peso na fonte */
+/* line-height define a altura da linha */
+
+.nft-card .info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 23px;
+}
+
+.nft-card .info .price {
+    color: var(--primary-medium);
+    display: flex;
+}
+
+.nft-card .info .price::before {
+    content: '';
+    background-image: url(../images/icon-ethereum.svg);
+    background-repeat: no-repeat center;
+    width: 11px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 5px ;
+}
+
+/* para usar o before se coloca o content vazio e o background-repeat: no-repeat; para não repetir a imagem 
+
+background-position: center; para centralizar o before
+
+para alinhar os elementos do price e da imagem do etherium verticalmente no centro precisa-se colocar um display flex no elemento pai, que é o price
+
+para o before aparecer tem que dar uma largura e uma altura e um display inline-block */
+
+.nft-card .info .days-left {
+    color: var(--primary-soft);
+    display: flex;
+}
+
+.nft-card .info .days-left::before {
+    content: '';
+    background-image: url(../images/icon-clock.svg) no-repeat center;
+    width: 15px;
+    height: 100%;
+    display: inline-block;
+    margin-right: 5px ;
+}
+
+
+.nft-card .creator {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid var(--neutral-soft);
+    padding-top: 15px;
+}
+
+/* usar o background color no creator apenas para ver qual é a área do creator */
+
+.nft-card .creator .avatar {
+    max-width: 35px;
+    border: 1px solid white;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.nft-card .creator .text {
+    color: var(--primary-soft);
+}
+
+.nft-card .creator .text .name {
+    color: #ffffff;
+}
+
+.nft-card .creator .text .name:hover {
+    color: var(--primary-medium);
+}
+
